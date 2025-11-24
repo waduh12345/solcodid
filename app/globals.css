@@ -136,3 +136,20 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;             /* Chrome, Safari, Opera */
 }
+
+
+@keyframes marquee-animation {
+  /* Mulai dari luar kanan (100% dari lebar container) */
+  0% {
+    transform: translateX(100%);
+  }
+  /* Berakhir di luar kiri (menggunakan -100% untuk gerakan ke kiri) */
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* 2. Definisikan kelas CSS yang menggunakan keyframes */
+.marquee {
+  animation: marquee-animation 25s linear infinite; /* 25s adalah durasi, bisa disesuaikan */
+}

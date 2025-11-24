@@ -6,7 +6,7 @@ const translations = {
   about: "Tentang Kami",
   news: "Cerita",
   gallery: "Kolaborasi",
-  tagline: "Plant based Colorant",
+  tagline: "Transformasi Digital Anda",
   switchLanguage: "Ganti ke English",
 };
 

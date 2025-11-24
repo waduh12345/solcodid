@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Colore Art Crafts",
-  description: "Produk seni dan kerajinan ramah lingkungan yang mengembangkan kreativitas anak sambil menjaga kelestarian bumi untuk masa depan mereka.",
+  title: "Solo Coding",
+  description:
+    "Solusi teknologi inovatif yang membantu bisnis Anda berkembang dengan aplikasi dan website custom, dirancang untuk memberikan pengalaman pengguna yang luar biasa, efisiensi tinggi, dan hasil yang dapat diukur",
   icons: {
     icon: "/favicon.ico",
   },

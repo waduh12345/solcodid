@@ -34,6 +34,8 @@ import DotdLoader from "@/components/loader/3dot";
 import { fredoka, sniglet } from "@/lib/fonts";
 import ImageCarousel from "./caraousel-hero";
 import Swal from "sweetalert2";
+import HeroSection from "./hero-section";
+import SoloCodingSection from "./categories";
 
 export default function HomePage() {
   const router = useRouter();
@@ -220,10 +222,29 @@ export default function HomePage() {
     });
   };
 
+  const data1 = {
+    title: (
+      <>
+        Kembangkan bisnis <br />
+        UMKM dan Ekspor <br />
+        dengan Website
+      </>
+    ),
+    subtitle: "Dapatkan domain murah dan layanan hosting terpercaya.",
+    promoText: "/tahun",
+    promoPrice: "Rp97.000",
+    discountedPrice: "Rp245.000",
+    buttonText: "Cari Domain",
+    // Ganti URL ini dengan URL gambar orang pertama yang diupload
+    personImageUrl:
+      "https://8nc5ppykod.ufs.sh/f/H265ZJJzf6brvez3grUCM8kgym3AN9S2oHUnjfpulaB7hxYP",
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <HeroSection {...data1} />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/30 via-sky-400/30 to-[#DFF19D]"></div>
         <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-pink-500 to-rose-500 rounded-full opacity-80 animate-pulse shadow-lg"></div>
         <div className="absolute bottom-32 right-16 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full opacity-80 animate-pulse delay-1000 shadow-lg"></div>
@@ -231,7 +252,6 @@ export default function HomePage() {
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 mt-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
             <div className="text-center lg:text-left space-y-8">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 rounded-full shadow-lg">
                 <Image
@@ -301,7 +321,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Hero Image */}
             <div className="relative">
               <div className="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                 <ImageCarousel />
@@ -333,127 +352,10 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ===================== Categories Section (Dynamic via Service) ===================== */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className={`text-center mb-10 ${fredoka.className}`}>
-            <h2 className="text-4xl lg:text-5xl font-semibold text-gray-900 mb-6">
-              {t["sec-2-title-1"]}{" "}
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                {t["sec-2-title-2"]}
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t["sec-2-subtitle"]}
-            </p>
-          </div>
-
-          {/* List states */}
-          {isListLoading && (
-            <div className="w-full flex items-center justify-center py-10">
-              <DotdLoader />
-            </div>
-          )}
-          {isListError && (
-            <div className="text-center text-red-600 py-10">
-              Gagal memuat data.
-            </div>
-          )}
-
-          {!isListLoading && !isListError && (
-            <>
-              {categories.length === 0 ? (
-                <div className="text-center text-gray-600 py-10">
-                  Belum ada merk.
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                  {categories.map((category, index) => (
-                    <div key={category.id} className="group h-96">
-                      <div className="relative h-full flex flex-col overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 transform">
-                        {/* Gambar */}
-                        <div
-                          className={`bg-gradient-to-br ${gradientByIndex(
-                            index
-                          )} h-48 flex items-center justify-center overflow-hidden`}
-                        >
-                          <Image
-                            src={safeCategoryImg(category.image)}
-                            alt={category.name}
-                            width={220}
-                            height={220}
-                            className="rounded-lg object-cover w-full opacity-80 max-h-48 group-hover:opacity-100 transition-all group-hover:scale-110 transform duration-500"
-                          />
-                        </div>
-
-                        {/* Konten */}
-                        <div className="p-6 bg-white flex flex-col flex-1">
-                          <div className="flex items-center justify-between mb-2">
-                            <h3 className="text-xl font-bold text-gray-900">
-                              {category.name}
-                            </h3>
-                            {Boolean(category.status) ? (
-                              <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full text-xs font-semibold">
-                                <CheckCircle className="w-4 h-4" />
-                                {t["sec-2-card-active"]}
-                              </span>
-                            ) : (
-                              <span className="inline-flex items-center gap-1 text-gray-600 bg-gray-100 px-2 py-1 rounded-full text-xs font-semibold">
-                                {t["sec-2-card-inactive"]}
-                              </span>
-                            )}
-                          </div>
-
-                          <p className="text-gray-600 text-sm line-clamp-2 mb-4">
-                            {category.description || "—"}
-                          </p>
-
-                          <div className="mt-auto">
-                            <button
-                              onClick={() => handleOpenDetail(category.slug)}
-                              className="flex items-center text-emerald-600 font-semibold"
-                            >
-                              <span>{t["sec-2-card-cta"]}</span>
-                              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Pagination */}
-              {total > paginate && (
-                <div className="flex items-center justify-center gap-3 mt-10">
-                  <Button
-                    variant="outline"
-                    disabled={currentPage <= 1}
-                    onClick={() => setPage((p) => Math.max(1, p - 1))}
-                  >
-                    Sebelumnya
-                  </Button>
-                  <span className="text-sm text-gray-600">
-                    Halaman {currentPage} / {lastPage}
-                  </span>
-                  <Button
-                    variant="outline"
-                    disabled={currentPage >= lastPage}
-                    onClick={() =>
-                      setPage((p) => (p < lastPage ? p + 1 : lastPage))
-                    }
-                  >
-                    Selanjutnya
-                  </Button>
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      </section>
+      <SoloCodingSection />
 
       {/* ===================== Why Choose COLORE (Features) ===================== */}
       <section className="py-20 bg-[#DFF19D]">

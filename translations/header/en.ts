@@ -6,7 +6,7 @@ const translations = {
   about: "About Us",
   news: "Story",
   gallery: "Collaboration",
-  tagline: "Plant based Colorant",
+  tagline: "Your Digital Transformation",
   switchLanguage: "Switch to Bahasa",
 };
 

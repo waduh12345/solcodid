@@ -11,6 +11,7 @@ import id from "@/translations/header/id";
 import en from "@/translations/header/en";
 import useCart from "@/hooks/use-cart";
 import Image from "next/image";
+import PromoBar from "./promobar";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -114,8 +115,9 @@ export default function Header() {
 
   return (
     <>
+      <PromoBar />
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-8 w-full z-40 transition-all duration-300 ${
           isScrolled
             ? "bg-white/95 backdrop-blur-lg shadow-2xl border-b border-emerald-100"
             : "bg-white/90 backdrop-blur-sm shadow-lg"
@@ -125,12 +127,13 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative">
+              <div className="relative flex items center gap-2">
                 <Image
-                  src="/logo-colore.png"
-                  alt="Colore Logo"
-                  width={100}
+                  src="/logo-text.png"
+                  alt="Solo Coding Logo"
+                  width={200}
                   height={100}
+                  className="rounded-lg"
                 />
               </div>
               {/* <div className="hidden sm:block">
@@ -175,11 +178,11 @@ export default function Header() {
               {/* Language Toggle - Desktop */}
               <button
                 onClick={toggleLanguage}
-                className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#DFF1AD] hover:bg-[#D1E7A0] transition-all duration-300 group shadow-md hover:shadow-lg"
+                className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#EBAD25] transition-all duration-300 group shadow-md hover:shadow-lg"
                 title={t.switchLanguage}
               >
-                <Globe className="w-4 h-4 text-gray-600 group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-bold text-gray-600">
+                <Globe className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                <span className="text-sm font-bold text-white">
                   {lang.toUpperCase()}
                 </span>
               </button>
