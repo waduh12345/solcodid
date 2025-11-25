@@ -62,7 +62,7 @@ export default function Header() {
     },
     {
       name: t.news,
-      href: "/news",
+      href: "/blog",
       hoverBg: "hover:bg-[#DFF1AD]", // Light green
       activeBg: "bg-[#DFF1AD]",
       textColor: "text-[#6B7280]",

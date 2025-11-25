@@ -4,7 +4,7 @@ const translations = {
   howToOrder: "How to Order",
   cekOrder: "Track Order",
   about: "About Us",
-  news: "Story",
+  news: "Blog",
   gallery: "Collaboration",
   tagline: "Your Digital Transformation",
   switchLanguage: "Switch to Bahasa",
